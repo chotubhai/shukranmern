@@ -1,0 +1,145 @@
+.slick-arrow.slick-hidden {
+  display: none;
+}
+.inpt__box--lg {
+  font-size: 1.125rem;
+  height: 58px;
+  width: 400px;
+  padding: 0 15px;
+}
+
+.inpt__box {
+  background-color: #fbfbfb !important;
+  border-radius: 6px;
+  border: 1px solid #efefef;
+  margin: 10px 0;
+  padding: 0 5px;
+}
+.width--block {
+  display: block;
+  width: 100% !important;
+}
+.slct--inline {
+  width: 31%;
+}
+.slct--xxl {
+  height: 58px;
+  line-height: 58px;
+  /* width: 100%; */
+}
+
+.slct--cstm {
+  /* background-image: url(//i2.lmsin.net/website_images/uat/shukran/ui/common/menu_drop_down_grey.svg); */
+  background-position: right 20px center;
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  padding-right: 40px;
+  padding-left: 30px;
+}
+
+.slct {
+  -webkit-appearance: none;
+  -webkit-border-radius: 2px;
+  -webkit-padding-end: 20px;
+  -webkit-padding-start: 2px;
+  -webkit-user-select: none;
+  background-color: #fbfbfb !important;
+  border-radius: 6px;
+  border: 1px solid #efefef;
+  margin: 5px 0;
+  color: #242424;
+  font-size: 1.125rem;
+}
+.slct--cstm {
+  padding: 0 17px;
+  font-size: 1.125rem;
+}
+
+.phnNmbr-div {
+  margin-bottom: 10px;
+}
+.grp--rltv,
+.grp__phn {
+  position: relative;
+}
+.phnNmbr-div {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.phnNmbr-div {
+  max-height: 68px;
+}
+.bttn--rspnsv {
+  /* width: 280px; */
+  min-height: 60px;
+  text-align: center;
+  font-size: 20px;
+  padding: 16px 0;
+  font-weight: 500;
+}
+.bttn--ylw {
+  color: #fff;
+  background-color: #c79e59;
+  transition: all 0.5s ease;
+}
+/* .bttn--xl {
+      font-size: 1.25rem;
+      padding: 16px;
+    } */
+.bttn--block {
+  display: block;
+  width: 100% !important;
+}
+.bttn {
+  /* display: inline-block; */
+  border-radius: 5px;
+  border: 1px solid transparent;
+  /* color: #c79e59; */
+  /* font-size: 1rem;
+      box-sizing: border-box;
+      text-align: center; */
+  cursor: pointer;
+}
+
+.p-1 {
+  padding: 0.3125rem !important;
+}
+
+.page-hdr__wrpr__ttl--sub {
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.06;
+  letter-spacing: normal;
+  text-align: left;
+  color: #919191;
+  margin: 10px 0 25px;
+}
+
+.page-hdr__wrpr__ttl {
+  font-size: 2.25rem;
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #242428;
+  margin-bottom: 25px;
+}
+
+.px-5 {
+  padding-left: 15rem !important;
+  padding-right: 15rem !important;
+  padding-top: 15px;
+}
+
+.page-hdr__wrpr {
+  margin-left: -17px;
+}
+
+input:focus {
+  outline: none;
+}

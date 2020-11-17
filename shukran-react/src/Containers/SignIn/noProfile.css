@@ -1,0 +1,22 @@
+.page-hdr__cntr__ttl {
+  font-size: 3rem;
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #242428;
+  margin-bottom: 25px;
+}
+
+.page-hdr__cntr__ttl--sub {
+  color: #212121;
+  margin-bottom: 30px;
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.06;
+  letter-spacing: normal;
+  margin: 20px 0 36px;
+}

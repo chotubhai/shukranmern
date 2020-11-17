@@ -1,0 +1,67 @@
+.p-0 {
+  padding: 0 !important;
+}
+
+.brdcrm--inbox {
+  padding: 1px 5px;
+}
+
+.brdcrm__item {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #c8c8c8;
+}
+
+.brd {
+  padding: 8px 22px;
+}
+
+.brdcrm__item__lnk {
+  color: #505050;
+  margin-left: 3px;
+  font-size: 0.875rem;
+}
+
+.brdcrm__item__arw {
+  margin: 0 6px;
+  font-size: 1rem;
+}
+
+.brdcrm__item:first-child .brdcrm__item__lnk {
+  margin-left: 0 !important;
+}
+
+.brdcrm__item__lnk:visited {
+  color: #505050;
+}
+
+a:hover,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #505050;
+  text-decoration: none;
+}
+
+.brdcrm__item {
+  font-family: sofia-pro, sans-serif !important;
+  font-size: 1rem;
+  line-height: 1.3em;
+  box-sizing: border-box;
+  direction: ltr;
+  text-align: left;
+  font-weight: 400;
+}
+
+ol,
+ul {
+  list-style: none;
+}

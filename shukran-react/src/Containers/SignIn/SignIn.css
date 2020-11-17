@@ -1,0 +1,45 @@
+.lnk--bttm-lnk {
+  margin-top: 35px;
+  margin-right: 6%;
+}
+
+.lnk--ylw,
+.lnk--ylw:hover,
+.lnk--ylw:visited {
+  color: #c79e59;
+}
+
+.lnk {
+  cursor: pointer;
+}
+.inpt__box--xl {
+  font-size: 1.25rem;
+  height: 58px;
+  width: 400px;
+  /* width: 400px; */
+  padding: 0 15px;
+}
+
+.width--block {
+  display: block;
+  width: 100% !important;
+}
+
+.inpt__box {
+  background-color: #fbfbfb !important;
+  border-radius: 6px;
+  border: 1px solid #efefef;
+  margin: 10px 0;
+  padding: 0 5px;
+}
+
+.page-hdr__wrpr__ttl {
+  font-size: 2.25rem;
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #242428;
+  margin-bottom: 25px;
+}

@@ -1,0 +1,25 @@
+header li a {
+  color: #252525;
+  font-weight: 500;
+}
+header li {
+  padding: 15px 12px;
+}
+
+header ul li a:hover {
+  color: #c79e59;
+  text-decoration: none;
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  border-bottom: 1px solid #dededf;
+}
+.header-main {
+  padding: 19px 0;
+}

@@ -1,0 +1,78 @@
+.offerh1{
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    font-size: 4.5rem;
+    width: 100%;
+}
+.offerdes {
+    font-family: sofia-pro,sans-serif!important;
+    font-size: 1rem;
+    line-height: 1.3em;
+    box-sizing: border-box;
+    direction: ltr;
+    text-align: left;
+}
+.offer{
+    width: 265px;
+    /* position: rela; */
+    /* height: 300px; */
+    display: inline-block;
+    margin: .4rem 1rem;
+}
+.brandwrap {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.mb-4, .my-4 {
+    margin-bottom: 1.25rem!important;
+}
+.brand {
+    border-radius: 5px 5px 5px 5px;
+    -ms-flex-align: center;
+    width: 200px;
+    align-items: center;
+    border: 1px solid #dededf;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    -ms-flex-pack: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.ant-card-body {
+    padding: 0;
+}
+
+.mob {
+    display: none;
+    /* transform: translateX(20vw   ); */
+    width: 90%;
+    text-align: right;
+}
+.centre.md {
+    display: flex;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+
+    .offerh1 {
+        padding-top: 2rem;
+      font-size: 2.5rem;
+    }
+    .centre.md {
+        display: none;
+    }
+    .md {
+        display: none;
+    }
+    .mob {
+        display: block;
+    }
+  }
