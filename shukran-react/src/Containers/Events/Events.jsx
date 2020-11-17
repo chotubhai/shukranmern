@@ -20,7 +20,7 @@ export const Events = () => {
   return (
     <>
       <div className="padding">
-        <div className="offerh1">ALL Gift Card:</div>
+        <div className="offerh1">ALL Events:</div>
         <div className="offerdes">Don't miss these great deals.</div>
         <div
           style={{ paddingTop: "4rem", margin: "0 auto", textAlign: "center" }}
