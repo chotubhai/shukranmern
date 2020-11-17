@@ -30,7 +30,7 @@ export const UpdateOffer = () => {
       window.location.href.split("/").length - 1
     ];
     axios
-      .post("http://localhost:5000/getOffersById", { _id })
+      .post("/getOffersById", { _id })
       .then((_offer) => {
         setOffer(_offer.data);
       })
@@ -39,11 +39,11 @@ export const UpdateOffer = () => {
 
   const headerprops = {
     name: "file",
-    action: "http://localhost:5000/upload",
+    action: "/upload",
     data: (file) => file.uid,
     accept: ".png",
     onRemove: (file) => {
-      axios.post("http://localhost:5000/removeupload", { uid: file.uid });
+      axios.post("/removeupload", { uid: file.uid });
       const index = headerImg.indexOf(file.uid + ".png");
       headerImg.splice(index, 1);
       setHeaderImg(headerImg);
@@ -59,11 +59,11 @@ export const UpdateOffer = () => {
   };
   const offerprops = {
     name: "file",
-    action: "http://localhost:5000/upload",
+    action: "/upload",
     data: (file) => file.uid,
     accept: ".png",
     onRemove: (file) => {
-      axios.post("http://localhost:5000/removeupload", { uid: file.uid });
+      axios.post("/removeupload", { uid: file.uid });
       const index = offerImg.indexOf(file.uid + ".png");
       offerImg.splice(index, 1);
       setOfferImg(offerImg);
@@ -85,7 +85,7 @@ export const UpdateOffer = () => {
       return;
     }
     axios
-      .post("http://localhost:5000/updateOffer", {
+      .post("/updateOffer", {
         ...value,
         headerImg,
         offerImg,

@@ -10,7 +10,7 @@ export const Events = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/getEvents")
+      .get("/getEvents")
       .then((_offerList) => {
         setOfferList(_offerList.data);
         // setLoading(false);

@@ -8,14 +8,14 @@ export const EventList = () => {
   const [loading, setLoading] = useState(true);
 
 function deleteOffer(item){
-  axios.post("http://localhost:5000/deleteEvent",{_id :item._id}).then(()=>{
+  axios.post("/deleteEvent",{_id :item._id}).then(()=>{
     window.location.reload();
   }) .catch((err) => message.error("server error"));
 }
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/getEvents")
+      .get("/getEvents")
       .then((_eventList) => {
         seteventList(_eventList.data);
         setLoading(false);

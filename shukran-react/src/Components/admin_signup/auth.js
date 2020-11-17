@@ -17,7 +17,7 @@ export const isAuthenticated = () => {
 
 export const signin = (data) => {
   return axios
-    .post(`http://localhost:5000/adminlogin`, data)
+    .post(`/adminlogin`, data)
     .then((res) => {
       authenticate(res.data)
       //redirect to /
