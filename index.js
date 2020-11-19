@@ -54,7 +54,7 @@ app.post("/adminlogin", (req, res) => {
   }
 });
 
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "shukran-react", "build", "index.html"));
 });
 
