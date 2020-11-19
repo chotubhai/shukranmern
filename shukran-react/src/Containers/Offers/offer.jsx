@@ -10,7 +10,7 @@ export const Offers = () => {
 
     useEffect(() => {
         axios
-          .get("http://localhost:5000/getOffers")
+          .get("http://54.84.213.218:5000/getOffers")
           .then((_offerList) => {
             setOfferList(_offerList.data);
             // setLoading(false);

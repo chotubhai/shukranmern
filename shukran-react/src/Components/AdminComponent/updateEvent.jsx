@@ -30,7 +30,7 @@ export const UpdateEvent = () => {
       window.location.href.split("/").length - 1
     ];
     axios
-      .post("http://localhost:5000/getEventsById", { _id })
+      .post("http://54.84.213.218:5000/getEventsById", { _id })
       .then((_event) => {
         setevent(_event.data);
       })
@@ -39,11 +39,11 @@ export const UpdateEvent = () => {
 
   const headerprops = {
     name: "file",
-    action: "http://localhost:5000/upload",
+    action: "http://54.84.213.218:5000/upload",
     data: (file) => file.uid,
     accept: ".png",
     onRemove: (file) => {
-      axios.post("http://localhost:5000/removeupload", { uid: file.uid });
+      axios.post("http://54.84.213.218:5000/removeupload", { uid: file.uid });
       const index = headerImg.indexOf(file.uid + ".png");
       headerImg.splice(index, 1);
       setHeaderImg(headerImg);
@@ -59,11 +59,11 @@ export const UpdateEvent = () => {
   };
   const eventprops = {
     name: "file",
-    action: "http://localhost:5000/upload",
+    action: "http://54.84.213.218:5000/upload",
     data: (file) => file.uid,
     accept: ".png",
     onRemove: (file) => {
-      axios.post("http://localhost:5000/removeupload", { uid: file.uid });
+      axios.post("http://54.84.213.218:5000/removeupload", { uid: file.uid });
       const index = eventImg.indexOf(file.uid + ".png");
       eventImg.splice(index, 1);
       seteventImg(eventImg);
@@ -84,7 +84,7 @@ export const UpdateEvent = () => {
       return;
     }
     axios
-      .post("http://localhost:5000/updateEvents", {
+      .post("http://54.84.213.218:5000/updateEvents", {
         ...value,
         headerImg,
         eventImg,

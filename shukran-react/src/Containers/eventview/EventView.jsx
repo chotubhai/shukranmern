@@ -5,7 +5,7 @@ export const EventView = () => {
   const [event, setevent] = useState();
   useEffect(() => {
     axios
-      .post("http://localhost:5000/getEventsById", {
+      .post("http://54.84.213.218:5000/getEventsById", {
         _id: window.location.href.split("/")[
           window.location.href.split("/").length - 1
         ],

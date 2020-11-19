@@ -5,7 +5,7 @@ export const OfferView = () => {
   const [offer, setOffer] = useState();
   useEffect(() => {
     axios
-      .post("http://localhost:5000/getOffersById", {
+      .post("http://54.84.213.218:5000/getOffersById", {
         _id: window.location.href.split("/")[
           window.location.href.split("/").length - 1
         ],

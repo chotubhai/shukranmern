@@ -25,11 +25,11 @@ export const EventCreate = () => {
 
   const headerprops = {
     name: "file",
-    action: "http://localhost:5000/upload",
+    action: "http://54.84.213.218:5000/upload",
     data: (file) => file.uid,
     accept: ".png",
     onRemove: (file) => {
-      axios.post("http://localhost:5000/removeupload", { uid: file.uid });
+      axios.post("http://54.84.213.218:5000/removeupload", { uid: file.uid });
       const index = headerImg.indexOf(file.uid + ".png");
       headerImg.splice(index, 1);
       setHeaderImg(headerImg);
@@ -45,11 +45,11 @@ export const EventCreate = () => {
   };
   const offerprops = {
     name: "file",
-    action: "http://localhost:5000/upload",
+    action: "http://54.84.213.218:5000/upload",
     data: (file) => file.uid,
     accept: ".png",
     onRemove: (file) => {
-      axios.post("http://localhost:5000/removeupload", { uid: file.uid });
+      axios.post("http://54.84.213.218:5000/removeupload", { uid: file.uid });
       const index = offerImg.indexOf(file.uid + ".png");
       offerImg.splice(index, 1);
       setOfferImg(offerImg);
@@ -71,7 +71,7 @@ export const EventCreate = () => {
     }
 
     axios
-      .post("http://localhost:5000/createEvent", {
+      .post("http://54.84.213.218:5000/createEvent", {
         ...value,
         headerImg,
         offerImg,
