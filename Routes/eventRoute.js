@@ -3,10 +3,7 @@ const router = express.Router();
 const fs = require("fs"),
   path = require("path");
 const AWS = require("aws-sdk");
-const s3 = new AWS.S3({
-  accessKeyId: "AKIAIUAGTSOYBZ7TIXCQ",
-  secretAccessKey: "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",
-});
+const changeLanguage = require("../util").changeLanguage;
 const { eventsmodal } = require("../models/events");
 
 router.get("/getEvents", (req, res) => {
@@ -72,31 +69,63 @@ router.post("/createEvent", (req, res) => {
   } = req.body;
 
   //upload all file to s3
-  uploadArrtos3(headerImg).then((arr) => {
-    headerImg = arr;
+  // uploadArrtos3(headerImg).then((arr) => {
+  //   headerImg = arr;
 
-    uploadArrtos3(offerImg).then((arr2) => {
-      offerImg = arr2;
+  //   uploadArrtos3(offerImg).then((arr2) => {
+  //     offerImg = arr2;
 
-      new eventsmodal({
-        name,
-        description,
-        tnc,
-        location,
-        headerImg,
-        offerImg,
-        validto,
-      })
-        .save()
-        .then((events) => res.send(events))
-        .catch((err) => {
-          res.status(403).json(err);
-          console.log(err);
-        });
+  new eventsmodal({
+    name,
+    description,
+    tnc,
+    location,
+    headerImg,
+    offerImg,
+    validto,
+    lang: "en",
+  })
+    .save()
+    .then((events) => res.send(events))
+    .catch((err) => {
+      res.status(403).json(err);
+      console.log(err);
     });
+
+  //make an entry of ar lang of same event entry
+  changeLanguage(req.body).then((body) => {
+    console.log(body)
+    var {
+      name,
+      headerImg,
+      offerImg,
+      description,
+      tnc,
+      validto,
+      location,
+    } = body;
+    new eventsmodal({
+      name,
+      headerImg,
+      offerImg,
+      description,
+      tnc,
+      validto,
+      location,
+      lang: "ar",
+    })
+      .save()
+      .then((events) => console.log(events))
+      .catch((err) => {
+        // res.status(403).json(err);
+        console.log(err);
+      });
   });
-  // res.send();
+  console.log(req.body);
 });
+//   });
+//   // res.send();
+// });
 
 router.post("/updateEvents", (req, res) => {
   const {

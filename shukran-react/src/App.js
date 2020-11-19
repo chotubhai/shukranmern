@@ -1,6 +1,7 @@
 import "./App.css";
 import Home from "./Containers/Home/Home";
 import "antd/dist/antd.css";
+import {IntlProvider, FormattedMessage} from 'react-intl'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignIn from "./Containers/SignIn/SignIn";
 import {Navbar} from "./Components/Navbar/Navbar";
@@ -19,6 +20,7 @@ import {ProtectedRoute} from './Components/protectedRoute/ProtectedRoute';
 
 function App() {
   return (
+    <IntlProvider locale="en" >
     <div className="app">
       <Router>
         <Navbar />
@@ -39,6 +41,7 @@ function App() {
         <Footer />
       </Router>
     </div>
+    </IntlProvider>
   );
 }
 

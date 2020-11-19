@@ -29,7 +29,7 @@ export const Events = () => {
             offerList.map((i) => (
               // <div className="offer">
               <Link to={`/eventview/${i._id}`}>
-                <Card className="offer" cover={<img src={i.headerImg[0]} height="100%" width="100%" alt="" />}>
+                <Card className="offer" cover={<img src={i.headerImg[0]}  height="100%" width="100%" alt="" />}>
                   <Meta title={i.name} />
                   
                 </Card>

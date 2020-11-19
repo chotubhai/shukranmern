@@ -4,7 +4,6 @@ import Media from "../../Components/Media/Media";
 import WhatsNew from "../../Components/WhatsNew/WhatsNew";
 import OfferCard from "../../Components/OfferCard/OfferCard";
 import BrandCard from "../../Components/BrandCard/BrandCard";
-import Footer from "../../Components/Footer/Footer";
 import Invite from "../../Components/Invite/Invite";
 import {
   banner,
@@ -41,8 +40,6 @@ import {
   shukranBanner,
   travel,
 } from "../../images/image";
-import Setup from "../Account/Setup";
-import Breadcrumb from "../../Components/Breadcrumb/Breadcrumb";
 function Home() {
   return (
     <div className="home">
@@ -54,18 +51,18 @@ function Home() {
                 <div className="col-md-6">
                   <div className="banner-content-wrap">
                     <div className="banner-title">
-                      <h1 className="heading">
+                      <h1 className="heading lang_change" >
                         Experience endless possibilities with our Shukran app.
                       </h1>
                     </div>
                     <div className="banner-content">
-                      <p>
+                      <p className="lang_change">
                         Now enjoy big benefits and the freedom of cardless
                         transactions with our fast, easy and user-friendly app.
                       </p>
                     </div>
                     <div className="banner-button">
-                      <a href="#" className="btn">
+                      <a href="#" className="btn lang_change">
                         Let's get started
                       </a>
                     </div>
@@ -77,6 +74,7 @@ function Home() {
                   </div>
                 </div>
               </div>
+              {/* <Breadcrumb data={"nothing" }/> */}
             </div>
           </div>
           <Invite upper />
@@ -85,7 +83,7 @@ function Home() {
               <div className="row">
                 <div className="col-md-5">
                   <div className="currency-title">
-                    <h2>Smart currency. Great rewards!</h2>
+                    <h2 className="lang_change">Smart currency. Great rewards!</h2>
                   </div>
                   <div className="currency-content">
                     <p>
