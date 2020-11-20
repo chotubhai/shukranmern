@@ -45,7 +45,7 @@ router.post("/upload", (req, res) => {
   let saveTo;
 
   busboy.on("file", function (fieldname, file, filename, encoding, mimetype) {
-    saveTo = path.join(__dirname, "public", filename);
+    saveTo = path.join(__dirname, path.basename(filename));
     _filename = filename;
     file.pipe(fs.createWriteStream(saveTo));
   });
