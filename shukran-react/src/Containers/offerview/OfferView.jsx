@@ -23,7 +23,7 @@ export const OfferView = () => {
           <Carousel>
             {offer &&
               offer.offerImg.map((i) => (
-                <img src={i} style={{ width: "90%" }} alt="" />
+                <img src={"/" +i} style={{ width: "90%" }} alt="" />
               ))}
           </Carousel>
 

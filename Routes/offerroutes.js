@@ -53,10 +53,6 @@ router.post("/upload", (req, res) => {
   busboy.on("field", function (
     fieldname,
     val,
-    fieldnameTruncated,
-    valTruncated,
-    encoding,
-    mimetype
   ) {
     uuid += val;
   });

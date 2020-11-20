@@ -21,7 +21,7 @@ export const EventView = () => {
         <div className="padding">
           <h1>{event.name}</h1>
           <img
-            src={event.offerImg[0]}
+            src={"/" + event.offerImg[0]}
             style={{ width: "90%", borderRadius: "18px", marginBottom: "3rem" }}
             alt=""
           />
