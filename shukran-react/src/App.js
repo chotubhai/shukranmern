@@ -33,7 +33,8 @@ function App() {
 
   axios.interceptors.request.use(req => {
     if(req.method==="get") req.params = {lang: locale}
-    else req.body = {...req.body,lang:locale}
+    else req.data.lang = locale;
+    console.log(req);
     return req;
   });
 
