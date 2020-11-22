@@ -32,6 +32,34 @@ router.post("/getOffersById", (req, res) => {
     });
 });
 
+router.post("/upload", (req, res) => {
+  // console.log(req.headers);
+  var busboy = new Busboy({ headers: req.headers });
+  let _filename;
+  let saveTo;
+
+  busboy.on("file", function (fieldname, file, filename, encoding, mimetype) {
+    saveTo = path.join(__dirname, "public",filename);
+    _filename = filename;
+    file.pipe(fs.createWriteStream(saveTo));
+  });
+  var uuid = "";
+  busboy.on("field", function (
+    fieldname,
+    val,
+  ) {
+    uuid += val;
+  });
+  busboy.on("finish", function () {
+    fs.renameSync(
+      path.join(__dirname, "public", _filename),
+      path.join(__dirname, "public", uuid + ".png")
+    );
+    res.send({ name: "xxx.png", status: "done" });
+  });
+  return req.pipe(busboy);
+});
+
 router.post("/removeupload", (req, res) => {
   const { uid } = req.body;
   fs.unlink(path.join(__dirname, "public", uid + ".png"), (err) => {
