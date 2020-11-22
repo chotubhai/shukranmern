@@ -10,7 +10,7 @@ exports.changeLanguage = (body) => {
     for (var key= 0 ;key < keys.length;key++) {
       if (typeof body[key] == "object") continue;
       const result = await translate(htmlToText(body[keys[key]]), { to: "ar" });
-      tempbody[keys[key]] = result.data[0];
+      tempbody[keys[key]] = result.data[0].split("").reverse().join("");
     }
     resolve(tempbody);
   });

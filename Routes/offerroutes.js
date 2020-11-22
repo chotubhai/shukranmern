@@ -7,7 +7,8 @@ const fs = require("fs");
 var Busboy = require("busboy");
 
 router.get("/getOffers", (req, res) => {
-  const {lang} = req.params.lang || "en";
+  const lang = req.query.lang;
+  console.log(lang);
   offermodal
     .find({lang}, { description: 0, tnc: 0 })
     .then((offer) => {

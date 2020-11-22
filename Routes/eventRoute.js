@@ -4,7 +4,7 @@ const changeLanguage = require("../util").changeLanguage;
 const { eventsmodal } = require("../models/events");
 
 router.get("/getEvents", (req, res) => {
-  const {lang} = req.params.lang || "en";
+  const lang = req.params.lang || "en";
   eventsmodal
     .find({ lang }, { description: 0, tnc: 0 })
     .then((offer) => {

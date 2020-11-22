@@ -26,7 +26,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.static(path.resolve(__dirname, "shukran-react", "build")));
 app.use(express.static(path.resolve(__dirname,"Routes","public")));
 app.use(allowCrossDomain);
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(offerRouter);
 app.use(eventsRoute);
