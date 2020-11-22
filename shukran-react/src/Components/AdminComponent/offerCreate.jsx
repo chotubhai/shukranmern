@@ -71,7 +71,7 @@ export const OfferCreate = () => {
     }
 
     axios
-      .post("http://localhost:5000/createOffer", {
+      .post("http://54.84.213.218:5000/createOffer", {
         ...value,
         headerImg,
         offerImg,
