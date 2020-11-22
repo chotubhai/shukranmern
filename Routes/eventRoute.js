@@ -1,14 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const fs = require("fs"),
-  path = require("path");
-const AWS = require("aws-sdk");
 const changeLanguage = require("../util").changeLanguage;
 const { eventsmodal } = require("../models/events");
 
 router.get("/getEvents", (req, res) => {
+  const {lang} = req.params.lang || "en";
   eventsmodal
-    .find({}, { description: 0, tnc: 0 })
+    .find({ lang }, { description: 0, tnc: 0 })
     .then((offer) => {
       res.send(offer);
     })
@@ -19,9 +17,9 @@ router.get("/getEvents", (req, res) => {
 });
 
 router.post("/getEventsById", (req, res) => {
-  const { _id } = req.body;
+  const { _id, lang } = req.body;
   eventsmodal
-    .findOne({ _id })
+    .findOne({ _id, lang })
     .then((Events) => {
       res.send(Events);
     })
@@ -30,32 +28,6 @@ router.post("/getEventsById", (req, res) => {
       console.log(err);
     });
 });
-
-function uploadArrtos3(arr) {
-  return new Promise((resolve, reject) => {
-    let temparr = [];
-    arr.forEach((file, i) => {
-      const fileContent = fs.readFileSync(path.join(__dirname, "public", file));
-      const params = {
-        Bucket: "shukranclone",
-        Key: file, // File name you want to save as in S3
-        Body: fileContent,
-      };
-      s3.upload(params, function (err, data) {
-        if (err) {
-          throw err;
-        }
-        try {
-          fs.unlinkSync(path.join(__dirname, "public", file));
-        } catch (err) {
-          //donothimg
-        }
-        temparr[i] = data.Location;
-        resolve(temparr);
-      });
-    });
-  });
-}
 
 router.post("/createEvent", (req, res) => {
   var {
@@ -67,13 +39,6 @@ router.post("/createEvent", (req, res) => {
     validto,
     location,
   } = req.body;
-
-  //upload all file to s3
-  // uploadArrtos3(headerImg).then((arr) => {
-  //   headerImg = arr;
-
-  //   uploadArrtos3(offerImg).then((arr2) => {
-  //     offerImg = arr2;
 
   new eventsmodal({
     name,
@@ -94,7 +59,7 @@ router.post("/createEvent", (req, res) => {
 
   //make an entry of ar lang of same event entry
   changeLanguage(req.body).then((body) => {
-    console.log(body)
+    console.log(body);
     var {
       name,
       headerImg,
@@ -121,11 +86,7 @@ router.post("/createEvent", (req, res) => {
         console.log(err);
       });
   });
-  console.log(req.body);
 });
-//   });
-//   // res.send();
-// });
 
 router.post("/updateEvents", (req, res) => {
   const {
@@ -161,12 +122,42 @@ router.post("/updateEvents", (req, res) => {
       res.status(403).json(err);
       console.log(err);
     });
+  changeLanguage(req.body).then((body) => {
+    var {
+      name,
+      description,
+      validto,
+      headerImg,
+      offerImg,
+      tnc,
+      location,
+    } = body;
+    eventsmodal
+      .findOneAndUpdate(
+        { ref: _id },
+        {
+          $set: {
+            name,
+            description,
+            validto,
+            location,
+            headerImg,
+            offerImg,
+            tnc,
+          },
+        }
+      )
+      .catch((err) => {
+        res.status(403).json(err);
+        console.log(err);
+      });
+  });
 });
 
 router.post("/deleteEvent", (req, res) => {
   const { _id } = req.body;
   eventsmodal
-    .findOneAndDelete({ _id })
+    .findAndDelete({ $or: [{ _id }, { ref: _id }] })
     .then((event) => {
       res.send(event);
     })

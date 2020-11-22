@@ -33,6 +33,7 @@ const eventsSchema = new Schema({
     type: String,
     enum: ["en", "ar"],
     required: true,
+    default: "en"
   },
 });
 

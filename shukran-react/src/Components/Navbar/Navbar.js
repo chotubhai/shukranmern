@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Menu, Button, Drawer } from "antd";
 import { Link } from "react-router-dom";
-import logo from './logo.png';
-import {  UserOutlined } from "@ant-design/icons";
+import logo from "./logo.png";
+import { UserOutlined } from "@ant-design/icons";
+import { FormattedMessage } from "react-intl";
+import { LanguageContext } from "../../App";
 
 const { SubMenu } = Menu;
 
 export const Navbar = () => {
   const [visible, showDrawer] = useState();
+  const { locale, setLocale, setOrientation } = useContext(LanguageContext);
 
   return (
     <div className="nav" style={{ display: "flex", padding: "08px 20px" }}>
@@ -21,27 +24,45 @@ export const Navbar = () => {
         style={{ flex: "1", justifyContent: "center" }}
       >
         <Menu mode="horizontal">
-          <SubMenu key="SubMenu" title="About">
+          <SubMenu key="SubMenu" title={<FormattedMessage id="n2" />}>
             <Menu.Item key="setting:3" style={{ textAlign: "left" }}>
-              <Link to="/about">About</Link>
+              <Link to="/about">
+                <FormattedMessage id="n2" />
+              </Link>
             </Menu.Item>
             <Menu.Item key="setting:4" style={{ textAlign: "left" }}>
-              <Link to="/rules">Programmes Rules</Link>
+              <Link to="/rules">
+                <FormattedMessage id="n1" />
+              </Link>
             </Menu.Item>
           </SubMenu>
           <Menu.Item>
-            <Link to="/offers">Offers</Link>
+            <Link to="/offers">
+              <FormattedMessage id="n3" />
+            </Link>
           </Menu.Item>
           <Menu.Item>
-            <Link to="/events">Events</Link>
+            <Link to="/events">
+              <FormattedMessage id="n4" />
+            </Link>
           </Menu.Item>
         </Menu>
       </div>
       <div className="right md">
         <Menu mode="horizontal">
-          <Menu.Item key="3">
+          <Link
+            to="#"
+            onClick={() => {
+              localStorage.setItem("locale", locale == "en" ? "ar" : "en");
+              setLocale(locale == "en" ? "ar" : "en");
+              setOrientation();
+            }}
+          >
+            Eng/Ar
+          </Link>
+          <Menu.Item>
             <Link to="/login">
-            <UserOutlined />
+              <UserOutlined />
             </Link>
           </Menu.Item>
         </Menu>
@@ -65,25 +86,45 @@ export const Navbar = () => {
           <Menu mode="vertical">
             <SubMenu key="SubMenu" title="About">
               <Menu.Item key="setting:3" style={{ textAlign: "left" }}>
-                <Link to="/about">About</Link>
+                <Link to="/about">
+                  <FormattedMessage id="n2" />
+                </Link>
               </Menu.Item>
               <Menu.Item key="setting:4" style={{ textAlign: "left" }}>
-                <Link to="/rules">Programmes Rules</Link>
+                <Link to="/rules">
+                  <FormattedMessage id="n1" />
+                </Link>
               </Menu.Item>
             </SubMenu>
             <Menu.Item>
-              <Link to="/offers">All Cards</Link>
+              <Link to="/offers">
+                <FormattedMessage id="n5" />
+              </Link>
             </Menu.Item>
             <Menu.Item>
-              <Link to="/brand">All Brands</Link>
+              <Link to="/events">
+                <FormattedMessage id="n6" />
+              </Link>
             </Menu.Item>
           </Menu>
 
           {/* Right Menu */}
           <Menu mode="vertical">
-            <Menu.Item key="3">
+            <Menu.Item>
+              <Link
+                to="#"
+                onClick={() => {
+                  localStorage.setItem("locale", locale == "en" ? "ar" : "en");
+                  setLocale(locale == "en" ? "ar" : "en");
+                  setOrientation();
+                }}
+              >
+                Eng/Ar
+              </Link>
+            </Menu.Item>
+            <Menu.Item>
               <Link to="/login">
-              <UserOutlined />
+                <UserOutlined />
               </Link>
             </Menu.Item>
           </Menu>

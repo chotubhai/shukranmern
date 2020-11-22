@@ -1,7 +1,8 @@
+import {createContext,useState} from 'react';
 import "./App.css";
 import Home from "./Containers/Home/Home";
 import "antd/dist/antd.css";
-import {IntlProvider, FormattedMessage} from 'react-intl'
+import {IntlProvider} from 'react-intl'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignIn from "./Containers/SignIn/SignIn";
 import {Navbar} from "./Components/Navbar/Navbar";
@@ -17,10 +18,28 @@ import {OfferView} from './Containers/offerview/OfferView';
 import {EventView} from './Containers/eventview/EventView';
 import AdminSignIn from './Components/admin_signup/SignIn';
 import {ProtectedRoute} from './Components/protectedRoute/ProtectedRoute';
+import {message} from './utils/lang/message';
+import axios from'axios'
+
+export const LanguageContext = createContext();
+
 
 function App() {
+  const [locale,setLocale] = useState(localStorage.getItem("locale") || "en"); //only ar and en
+  function setOrientation(){
+    document.querySelectorAll(".row,.nav,.banner-stripe").forEach(i => i.classList.toggle("rev")); //.rev on app.css
+    document.querySelectorAll(".padding").forEach(i => i.classList.toggle("rev")); //.rev on app.css
+  }
+
+  axios.interceptors.request.use(req => {
+    if(req.method==="get") req.params = {lang: locale}
+    else req.body.lang = locale;
+    return req;
+  });
+
   return (
-    <IntlProvider locale="en" >
+    <LanguageContext.Provider value={{locale,setLocale,setOrientation}}  >
+    <IntlProvider locale={locale} messages={message[locale]}>
     <div className="app">
       <Router>
         <Navbar />
@@ -42,6 +61,7 @@ function App() {
       </Router>
     </div>
     </IntlProvider>
+    </LanguageContext.Provider>
   );
 }
 

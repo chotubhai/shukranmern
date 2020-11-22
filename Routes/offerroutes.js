@@ -1,21 +1,15 @@
 const express = require("express");
-const AWS = require("aws-sdk");
-const s3 = new AWS.S3({
-  accessKeyId: "AKIAIUAGTSOYBZ7TIXCQ",
-  secretAccessKey: "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",
-});
+const changeLanguage = require("../util").changeLanguage;
 const router = express.Router();
 const { offermodal } = require("../models/offers");
-var smtpTransport = require("nodemailer-smtp-transport");
-const nodemailer = require("nodemailer");
 const path = require("path");
 const fs = require("fs");
 var Busboy = require("busboy");
-const { rejects } = require("assert");
 
 router.get("/getOffers", (req, res) => {
+  const {lang} = req.params.lang || "en";
   offermodal
-    .find({}, { description: 0, tnc: 0 })
+    .find({lang}, { description: 0, tnc: 0 })
     .then((offer) => {
       res.send(offer);
     })
@@ -26,9 +20,9 @@ router.get("/getOffers", (req, res) => {
 });
 
 router.post("/getOffersById", (req, res) => {
-  const { _id } = req.body;
+  const { _id,lang } = req.body;
   offermodal
-    .findOne({ _id })
+    .findOne({ _id,lang })
     .then((offer) => {
       res.send(offer);
     })
@@ -36,34 +30,6 @@ router.post("/getOffersById", (req, res) => {
       res.status(403).json(err);
       console.log(err);
     });
-});
-
-router.post("/upload", (req, res) => {
-  // console.log(req.headers);
-  var busboy = new Busboy({ headers: req.headers });
-  let _filename;
-  let saveTo;
-
-  busboy.on("file", function (fieldname, file, filename, encoding, mimetype) {
-    saveTo = path.join(__dirname, "public",filename);
-    _filename = filename;
-    file.pipe(fs.createWriteStream(saveTo));
-  });
-  var uuid = "";
-  busboy.on("field", function (
-    fieldname,
-    val,
-  ) {
-    uuid += val;
-  });
-  busboy.on("finish", function () {
-    fs.renameSync(
-      path.join(__dirname, "public", _filename),
-      path.join(__dirname, "public", uuid + ".png")
-    );
-    res.send({ name: "xxx.png", status: "done" });
-  });
-  return req.pipe(busboy);
 });
 
 router.post("/removeupload", (req, res) => {
@@ -74,53 +40,43 @@ router.post("/removeupload", (req, res) => {
   });
 });
 
-//not in use now 
-function uploadArrtos3(arr) {
-  return new Promise((resolve, reject) => {
-    let temparr = [];
-    arr.forEach((file, i) => {
-      const fileContent = fs.readFileSync(path.join(__dirname, "public", file));
-      const params = {
-        Bucket: "shukranclone",
-        Key: file, // File name you want to save as in S3
-        Body: fileContent,
-      };
-      s3.upload(params, function (err, data) {
-        if (err) {
-          throw err;
-        }
-        try{
-        fs.unlinkSync(path.join(__dirname, "public", file));
-        }catch(err){
-            //donothimg
-        }
-        temparr[i] = data.Location;
-        resolve(temparr);
-      });
-    });
-  });
-}
-
 router.post("/createOffer", (req, res) => {
   var { name, headerImg, offerImg, description, tnc, validto } = req.body;
+var enOffer;
 
-  //upload all file to s3
-
-
-      new offermodal({
-        name,
-        description,
-        tnc,
-        headerImg,
-        offerImg,
-        validto,
-      })
-        .save()
-        .then((offer) => res.send(offer))
-        .catch((err) => {
-          res.status(403).json(err);
-          console.log(err);
-        });
+  new offermodal({
+    name,
+    description,
+    tnc,
+    headerImg,
+    offerImg,
+    validto,
+  })
+    .save()
+    .then((offer) => {enOffer = offer; res.send(offer)})
+    .catch((err) => {
+      res.status(403).json(err);
+      console.log(err);
+    });
+  changeLanguage(req.body).then((body) => {
+    var { name, headerImg, offerImg, description, tnc, validto } = body;
+    new offermodal({
+      name,
+      headerImg,
+      offerImg,
+      description,
+      tnc,
+      validto,
+      lang: "ar",
+      ref: enOffer._id
+    })
+      .save()
+      .then((events) => console.log(events))
+      .catch((err) => {
+        // res.status(403).json(err);
+        console.log(err);
+      });
+  });
   // res.send();
 });
 
@@ -147,15 +103,14 @@ router.post("/updateOffer", (req, res) => {
       res.status(403).json(err);
       console.log(err);
     });
+
+
 });
 
 router.post("/deleteOffer", (req, res) => {
   const { _id } = req.body;
   offermodal
-    .findOneAndDelete({ _id })
-    .then((offer) => {
-      res.send(offer);
-    })
+    .findAndDelete({ $or:[{_id},{ref:_id}] })
     .catch((err) => {
       res.status(403).json(err);
       console.log(err);

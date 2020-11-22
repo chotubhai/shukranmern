@@ -25,6 +25,15 @@ const offerSchema = new Schema({
     tnc: {
         type:String,
     },
+    lang: {
+        type: String,
+        enum: ["en", "ar"],
+        required: true,
+        default:"en"
+      },
+    ref: { //ref to en lang entry
+        id: mongoose.SchemaTypes.ObjectId
+    }
 })
 
 

@@ -4,6 +4,8 @@ import twitter from "../../images/icons/twitter.svg";
 import instagram from "../../images/icons/instagram.svg";
 import youTube from "../../images/icons/youtube.svg";
 import fShukran from "../../images/shukran_logo@2x.webp";
+import { FormattedMessage } from "react-intl";
+
 function Footer() {
   return (
     <footer style={{ borderTop: "1px solid #c8c8c8" }} className="footertext">
@@ -11,58 +13,82 @@ function Footer() {
         <div className="row no-gutters">
           <div className="col-md-2 first-column">
             <div className="menu-title">
-              <h6>My Account</h6>
+              <h6>
+                <FormattedMessage id="f1" />
+              </h6>
             </div>
             <div className="footer-menu">
               <ul>
                 <li>
-                  <a href="#">Create a new account</a>
+                  <a href="#">
+                    <FormattedMessage id="f2" />
+                  </a>
                 </li>
                 <li>
-                  <a href="#">Sign in to shukran</a>
+                  <a href="#">
+                    <FormattedMessage id="f3" />
+                  </a>
                 </li>
               </ul>
             </div>
           </div>
           <div className="col-md-2 account">
             <div className="menu-title">
-              <h6>About shukran</h6>
+              <h6>
+                <FormattedMessage id="f4" />
+              </h6>
             </div>
             <div className="footer-menu">
               <ul>
                 <li>
-                  <a href="#">About the programme</a>
+                  <a href="#">
+                    <FormattedMessage id="f5" />
+                  </a>
                 </li>
                 <li>
-                  <a href="#">Participating brands</a>
+                  <a href="#">
+                    <FormattedMessage id="f6" />
+                  </a>
                 </li>
                 <li>
-                  <a href="#">Programme rules</a>
+                  <a href="#">
+                    <FormattedMessage id="f7" />
+                  </a>
                 </li>
               </ul>
             </div>
           </div>
           <div className="col-md-2 account">
             <div className="menu-title">
-              <h6>Help</h6>
+              <h6>
+                <FormattedMessage id="f8" />
+              </h6>
             </div>
             <div className="footer-menu">
               <ul>
                 <li>
-                  <a href="#">FAQ's</a>
+                  <a href="#">
+                    <FormattedMessage id="f9" />
+                  </a>
                 </li>
                 <li>
-                  <a href="#">Store locator</a>
+                  <a href="#">
+                    <FormattedMessage id="f10" />
+                  </a>
                 </li>
                 <li>
-                  <a href="#">Contact us</a>
+                  <a href="#">
+                    <FormattedMessage id="f11" />
+                  </a>
                 </li>
               </ul>
             </div>
           </div>
           <div className="col-md-2 connect">
             <div className="menu-title">
-              <h6>Connect with us</h6>
+              <h6>
+                <FormattedMessage id="f12" />
+              </h6>
             </div>
             <div className="social-icons">
               <ul className="d-flex align-items-center">
@@ -88,13 +114,17 @@ function Footer() {
                 </li>
               </ul>
               <div className="social-note">
-                <p>Like or follow us to join in the conversation</p>
+                <p>
+                  <FormattedMessage id="f13" />
+                </p>
               </div>
             </div>
           </div>
           <div className="col-md-4 update">
             <div className="menu-title">
-              <h5>Stay updated</h5>
+              <h5>
+                <FormattedMessage id="f14" />
+              </h5>
             </div>
             <div className="email-section">
               <form>
@@ -110,7 +140,9 @@ function Footer() {
                 </div>
               </form>
               <div className="social-note">
-                <p>Never miss an offer or update from your favourite brand!</p>
+                <p>
+                  <FormattedMessage id="f15" />
+                </p>
               </div>
             </div>
           </div>
@@ -120,7 +152,7 @@ function Footer() {
           <div className="d-flex align-items-center justify-content-between">
             <img src={fShukran} style={{ width: 40, height: 40 }} />
             <p style={{ marginTop: 10, marginLeft: 20 }} className="footertext">
-              © 2010 - 2020 Landmark group
+              <FormattedMessage id="f16" />
             </p>
           </div>
           <div style={{ float: "right" }} />

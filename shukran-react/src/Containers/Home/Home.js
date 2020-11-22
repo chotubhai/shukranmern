@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "../../Components/Navbar/Navbar";
 import Media from "../../Components/Media/Media";
 import WhatsNew from "../../Components/WhatsNew/WhatsNew";
 import OfferCard from "../../Components/OfferCard/OfferCard";
 import BrandCard from "../../Components/BrandCard/BrandCard";
 import Invite from "../../Components/Invite/Invite";
+import { FormattedMessage } from "react-intl";
 import {
   banner,
   cWorld,
@@ -40,7 +40,9 @@ import {
   shukranBanner,
   travel,
 } from "../../images/image";
+
 function Home() {
+  
   return (
     <div className="home">
       <div className="wrapper">
@@ -51,19 +53,18 @@ function Home() {
                 <div className="col-md-6">
                   <div className="banner-content-wrap">
                     <div className="banner-title">
-                      <h1 className="heading lang_change" >
-                        Experience endless possibilities with our Shukran app.
+                      <h1 className="heading lang_change">
+                        <FormattedMessage id="1" />
                       </h1>
                     </div>
                     <div className="banner-content">
                       <p className="lang_change">
-                        Now enjoy big benefits and the freedom of cardless
-                        transactions with our fast, easy and user-friendly app.
+                        <FormattedMessage id="2" />
                       </p>
                     </div>
                     <div className="banner-button">
                       <a href="#" className="btn lang_change">
-                        Let's get started
+                      <FormattedMessage id="a4" />
                       </a>
                     </div>
                   </div>
@@ -83,18 +84,17 @@ function Home() {
               <div className="row">
                 <div className="col-md-5">
                   <div className="currency-title">
-                    <h2 className="lang_change">Smart currency. Great rewards!</h2>
+                    <h2 className="lang_change">
+                      <FormattedMessage id="4" />
+                    </h2>
                   </div>
                   <div className="currency-content">
                     <p>
-                      Welcome to Shukran, the Landmark Group’s award-winning
-                      retail loyalty programme. The largest of its kind in the
-                      Middle East, Shukran rewards customers as they shop across
-                      a range of the Group’s brands and other partner brands.
+                      <FormattedMessage id="5" />
                     </p>
                   </div>
                   <div className="learn-more">
-                    <a href="#">Learn more</a>
+                    <a href="#"><FormattedMessage id="a5" /></a>
                   </div>
                 </div>
                 <div className="col-md-7">
@@ -110,20 +110,20 @@ function Home() {
               <div className="row">
                 <div className="col-md-4">
                   <div className="invite-title">
-                    <h2>We invite you to a world of exclusive benefits</h2>
+                    <h2>
+                      <FormattedMessage id="6" />
+                    </h2>
                   </div>
                   <div className="invite-content">
                     <p>
-                      Join us today for instant savings, special privileges and
-                      a whole lot more!
+                      <FormattedMessage id="7" />
                     </p>
                   </div>
                   <div className="sign-up">
                     <a href="#" className="btn">
-                      Sign up
+                      <FormattedMessage id="a1" />
                     </a>
                   </div>
-                  <span>Send the app link directly to your phone.</span>
                   <div className="contact">
                     <form>
                       <div className="form-wrapper d-flex align-items-center">
@@ -153,44 +153,39 @@ function Home() {
                 <div className="col-md-4">
                   <Media
                     image={exclusive}
-                    heading="Get exclusive offer"
-                    info="Enjoy special, personalised deals from your favourite brands."
+                    heading={<FormattedMessage id="m1" />}
+                    info={<FormattedMessage id="m2" />}
                   />
                   <Media
                     image={cart}
-                    heading="Enjoy rewards online"
-                    info=" Enjoy special, personalised deals from your favourite
-                    brands."
+                    heading={<FormattedMessage id="m3" />}
+                    info={<FormattedMessage id="m2" />}
                   />
 
                   <Media
                     image={offers}
-                    heading="Get member-only emails"
-                    info="Enjoy special, personalised deals from your favourite
-                    brands."
+                    heading={<FormattedMessage id="m4" />}
+                    info={<FormattedMessage id="m2" />}
                   />
                 </div>
 
                 <div className="col-md-4">
                   <Media
                     image={invitation}
-                    heading="Receive special invitations"
-                    info="Enjoy special, personalised deals from your favourite
-                    brands."
+                    heading={<FormattedMessage id="m5" />}
+                    info={<FormattedMessage id="m2" />}
                   />
 
                   <Media
                     image={shukran}
                     heading="Earn Shukrans during sales"
-                    info="Enjoy special, personalised deals from your favourite
-                    brands."
+                    info={<FormattedMessage id="m2" />}
                   />
 
                   <Media
                     image={invite}
                     heading="Enjoy the app advantage"
-                    info="Enjoy special, personalised deals from your favourite
-                    brands."
+                    info={<FormattedMessage id="m2" />}
                   />
                 </div>
               </div>
@@ -200,8 +195,10 @@ function Home() {
           <div className="invite-section">
             <div className="container">
               <div className="offer-title">
-                <h2>What's new</h2>
-                <a href="#">View all</a>
+                <h2>
+                  <FormattedMessage id="8" />
+                </h2>
+                <a href="#"><FormattedMessage id="a3" /></a>
               </div>
               <div className="container">
                 <div className="row">
@@ -221,7 +218,9 @@ function Home() {
           <div className="offer-card">
             <div className="container">
               <div className="offer-title">
-                <h2>Latest offers</h2>
+                <h2>
+                  <FormattedMessage id="9" />
+                </h2>
                 <a href="#">View all</a>
               </div>
               <div className="small-arrow" />
@@ -270,86 +269,12 @@ function Home() {
                   valid="28 days left"
                   memberOnly="MEMBERS ONLY"
                 />
-
-                {/* <div className="card">
-                  <img
-                    src="images/ksa---crazy-offer-1603116056.jpg"
-                    className="card-img-top"
-                  />
-                  <div className="card-body">
-                    <div className="card-img">
-                      <img src="images/oc2xShoexpress.png" />
-                    </div>
-                    <br />
-                    <p className="card-text">Crazy Offer</p>
-                    <div className="member-offer">
-                      <br />
-                      <br />
-                      <div className="tag">
-                        <p>MEMBERS ONLY</p>
-                      </div>
-                      <div className="days-left">
-                        <p>28 days left</p>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
-                {/* <div className="card">
-                  <img
-                    src="images/shurkan-header3008-w-x-1692px-min-1601808599.jpg"
-                    className="card-img-top"
-                  />
-                  <div className="card-body">
-                    <div className="card-img">
-                      <img src="images/Homecentre.png" />
-                    </div>
-                    <br />
-                    <p className="card-text">20%-70% Off</p>
-                    <div className="member-offer">
-                      <div className="days-left marginbottom">
-                        <p>3 days left</p>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
-                {/* <div className="card">
-                  <img
-                    src="images/mobily3008x1692-web-1575551446.jpg"
-                    className="card-img-top"
-                  />
-                  <div className="card-body">
-                    <div className="card-img">
-                      <img src="images/eng-1575550763.png" />
-                    </div>
-                    <p className="card-text">More options for your points</p>
-                    <div className="member-offer">
-                      <div className="days-left marginbottom-15">
-                        <p>70 days left</p>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
-                {/* <div className="card">
-                  <img
-                    src="images/jana-2-1551707480.jpg"
-                    className="card-img-top"
-                  />
-                  <div className="card-body">
-                    <div className="card-img">
-                      <img src="images/bsf-1551707296.png" />
-                    </div>
-                    <p className="card-text">Convert JANA Points to Shukrans</p>
-                    <div className="member-offer">
-                      <div className="days-left marginbottom">
-                        <p>70 days left</p>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
               </div>
               <div className="partner">
                 <div className="offer-title partner-title">
-                  <h2>Partner offers</h2>
+                  <h2>
+                    <FormattedMessage id="10" />
+                  </h2>
                   <a href="#">View all</a>
                 </div>
                 <div className="partner-small-arrow" />
@@ -408,51 +333,6 @@ function Home() {
                     valid="65 days left"
                     memberOnly="MEMBERS ONLY"
                   />
-
-                  {/* <div className="card">
-                    <img
-                      src="images/NCB Rewards_offers.jpg"
-                      className="card-img-top"
-                    />
-                    <div className="card-body">
-                      <div className="card-img">
-                        <img src="images/NCB.jpg" />
-                      </div>
-                      <p className="card-text">
-                        Get lucky with Shukran &amp; NCB LAK Rewards!
-                      </p>
-                      <div className="member-offer">
-                        <div className="tag">
-                          <p>MEMBERS ONLY</p>
-                        </div>
-                        <div className="days-left">
-                          <p>70 days left</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div> */}
-                  {/* <div className="card">
-                    <img
-                      src="images/kid-with-cw-ipad-1576681184.jpg"
-                      className="card-img-top"
-                    />
-                    <div className="card-body">
-                      <div className="card-img">
-                        <img src="images/cw-wide-logo1x-1576681301.png" />
-                      </div>
-                      <br />
-                      <br />
-                      <p className="card-text">Grow curious minds</p>
-                      <div className="member-offer">
-                        <div className="tag">
-                          <p>MEMBERS ONLY</p>
-                        </div>
-                        <div className="days-left">
-                          <p>70 days left</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </div>
@@ -462,14 +342,16 @@ function Home() {
               <div className="row">
                 <div className="col-md-6">
                   <div className="invite-title">
-                    <h2>Brands and partners</h2>
-                    <a href="#">View all</a>
+                    <h2>
+                      <FormattedMessage id="11" />
+                    </h2>
+                    <a href="#">
+                      <FormattedMessage id="a3" />
+                    </a>
                   </div>
                   <div className="invite-content">
                     <p>
-                      We've got over a million products and experiences waiting
-                      for you. Enjoy the best of fashion, home, baby care,
-                      dining and entertainment.
+                      <FormattedMessage id="12" />
                     </p>
                   </div>
                 </div>
@@ -479,26 +361,42 @@ function Home() {
                       <tr>
                         <td>
                           <div className="col-md-1">
-                            <h2>10M+</h2>
-                            <h5>Members</h5>
+                            <h2>
+                              <FormattedMessage id="tr1" />
+                            </h2>
+                            <h5>
+                              <FormattedMessage id="tr2" />
+                            </h5>
                           </div>
                         </td>
                         <td>
                           <div className="col-md-1">
-                            <h2 style={{ marginLeft: 30 }}>8</h2>
-                            <h5>Countries</h5>
+                            <h2 style={{ marginLeft: 30 }}>
+                              <FormattedMessage id="tr8" />
+                            </h2>
+                            <h5>
+                              <FormattedMessage id="tr3" />
+                            </h5>
                           </div>
                         </td>
                         <td>
                           <div className="col-md-1">
-                            <h2 style={{ marginLeft: 10 }}>57</h2>
-                            <h5>Brands</h5>
+                            <h2 style={{ marginLeft: 10 }}>
+                              <FormattedMessage id="tr7" />
+                            </h2>
+                            <h5>
+                              <FormattedMessage id="tr4" />
+                            </h5>
                           </div>
                         </td>
                         <td>
                           <div className="col-md-1">
-                            <h2>2,000</h2>
-                            <h5 style={{ marginLeft: 10 }}>Stores</h5>
+                            <h2>
+                              <FormattedMessage id="tr6" />
+                            </h2>
+                            <h5 style={{ marginLeft: 10 }}>
+                              <FormattedMessage id="tr5" />
+                            </h5>
                           </div>
                         </td>
                       </tr>
@@ -523,7 +421,7 @@ function Home() {
               <div className="row no-guttersNew">
                 <div className="col-md-12">
                   <a href="#" style={{ color: "#c79e59" }}>
-                    View all brands &amp; partners
+                    <FormattedMessage id="a2" />
                   </a>
                 </div>
               </div>

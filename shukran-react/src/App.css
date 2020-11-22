@@ -17,6 +17,9 @@ body {
 .container {
   max-width: 1280px;
 }
+.rev {
+  transform: scaleX(-1);
+}
 ul {
   list-style: none;
   padding: 0;
